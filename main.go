@@ -1,12 +1,12 @@
 package main
 
 import (
-	"DataStructures/linked_list"
+	"DataStructures/linked_list/singlyLinkedList"
 	"fmt"
 )
 
 func main() {
-	list := linked_list.SinglyLinkedList{}
+	list := new(singlyLinkedList.SinglyLinkedList)
 
 	list.InsertFirst(1)
 	list.InsertLast(3)

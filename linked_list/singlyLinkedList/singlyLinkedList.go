@@ -1,23 +1,23 @@
-package linked_list
+package singlyLinkedList
 
 import (
 	"errors"
 	"fmt"
 )
 
-type Node struct {
+type node struct {
 	Val  int
-	Next *Node
+	Next *node
 }
 
 type SinglyLinkedList struct {
-	Head *Node
-	Tail *Node
+	Head *node
+	Tail *node
 	size int
 }
 
 func (l *SinglyLinkedList) InsertFirst(val int) {
-	newNode := &Node{Val: val}
+	newNode := &node{Val: val}
 
 	if l.Head == nil {
 		l.initList(newNode)
@@ -29,7 +29,7 @@ func (l *SinglyLinkedList) InsertFirst(val int) {
 }
 
 func (l *SinglyLinkedList) InsertLast(val int) {
-	newNode := &Node{Val: val}
+	newNode := &node{Val: val}
 
 	if l.Head == nil {
 		l.initList(newNode)
@@ -50,7 +50,7 @@ func (l *SinglyLinkedList) InsertAt(val int, idx int) error {
 	}
 
 	if l.size >= idx {
-		newNode := &Node{Val: val}
+		newNode := &node{Val: val}
 
 		node := l.Head
 		for i := 0; i < idx-1; i++ {
@@ -146,7 +146,7 @@ func (l *SinglyLinkedList) Print() {
 	fmt.Println(node.Val, "- Tail")
 }
 
-func (l *SinglyLinkedList) initList(node *Node) {
+func (l *SinglyLinkedList) initList(node *node) {
 	l.Head = node
 	l.Tail = node
 	l.size = 1

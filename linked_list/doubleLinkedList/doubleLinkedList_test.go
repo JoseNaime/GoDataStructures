@@ -1,11 +1,11 @@
-package linked_list
+package doubleLinkedList
 
 import (
 	"testing"
 )
 
-func TestSinglyLinkedList_InsertFirst(t *testing.T) {
-	l := SinglyLinkedList{}
+func TestDoubleLinkedList_InsertFirst(t *testing.T) {
+	l := new(DoubleLinkedList)
 	l.InsertFirst(5)
 
 	if l.Head == nil {
@@ -32,8 +32,8 @@ func TestSinglyLinkedList_InsertFirst(t *testing.T) {
 	}
 }
 
-func TestSinglyLinkedList_InsertLast(t *testing.T) {
-	l := SinglyLinkedList{}
+func TestDoubleLinkedList_InsertLast(t *testing.T) {
+	l := new(DoubleLinkedList)
 	l.InsertLast(5)
 
 	if l.Head == nil {
@@ -60,8 +60,8 @@ func TestSinglyLinkedList_InsertLast(t *testing.T) {
 	}
 }
 
-func TestSinglyLinkedList_InsertAt(t *testing.T) {
-	l := SinglyLinkedList{}
+func TestDoubleLinkedList_InsertAt(t *testing.T) {
+	l := new(DoubleLinkedList)
 	err := l.InsertAt(6, 4)
 
 	// Test to insert in no range idx
@@ -93,8 +93,8 @@ func TestSinglyLinkedList_InsertAt(t *testing.T) {
 	}
 }
 
-func TestSinglyLinkedList_RemoveFirst(t *testing.T) {
-	l := SinglyLinkedList{}
+func TestDoubleLinkedList_RemoveFirst(t *testing.T) {
+	l := new(DoubleLinkedList)
 	err := l.RemoveFirst()
 
 	if err == nil {
@@ -122,8 +122,8 @@ func TestSinglyLinkedList_RemoveFirst(t *testing.T) {
 	}
 }
 
-func TestSinglyLinkedList_RemoveLast(t *testing.T) {
-	l := SinglyLinkedList{}
+func TestDoubleLinkedList_RemoveLast(t *testing.T) {
+	l := new(DoubleLinkedList)
 	err := l.RemoveLast()
 
 	if err == nil {
@@ -151,8 +151,8 @@ func TestSinglyLinkedList_RemoveLast(t *testing.T) {
 	}
 }
 
-func TestSinglyLinkedList_RemoveAt(t *testing.T) {
-	l := SinglyLinkedList{}
+func TestDoubleLinkedList_RemoveAt(t *testing.T) {
+	l := new(DoubleLinkedList)
 	err := l.RemoveAt(4)
 
 	// Test to insert in no range idx
@@ -175,6 +175,17 @@ func TestSinglyLinkedList_RemoveAt(t *testing.T) {
 
 	if err != nil || l.size != 2 || l.Head.Next.Val != 3 {
 		t.Errorf("Do not delete value at index, Got: %d Expects: %d, error: %s", l.Head.Next.Val, 3, err)
+		l.Print()
+	}
+
+	l.InsertLast(4)
+	l.InsertLast(5)
+	l.InsertLast(6)
+
+	err = l.RemoveAt(4)
+
+	if err != nil || l.size != 4 || l.Tail.Val != 6 {
+		t.Errorf("Do not delete value at index, Got: %d Expects: %d, error: %s", l.Tail.Val, 6, err)
 		l.Print()
 	}
 
